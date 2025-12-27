@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# KONFIGURASI HALAMAN
+# halaman
 st.set_page_config(
     page_title="Dashboard E-Commerce Analytics", 
     layout="wide",
@@ -13,24 +13,24 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-/* BACKGROUND */
+/* background */
 html, body, [data-testid="stAppViewContainer"] {
     background-color: #ffffff;
 }
 
-/* MAIN PADDING */
+/* padding */
 .main {
     padding: 0rem 3rem;
 }
 
-/* CARD – HANYA container(border=True) */
+/* container(border=True) */
 [data-testid="stVerticalBlockBorderWrapper"] {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
-/* METRIC */
+/* metric */
 [data-testid="stMetricValue"] {
     font-size: 1.4rem !important;
     font-weight: 800 !important;
@@ -42,7 +42,7 @@ html, body, [data-testid="stAppViewContainer"] {
 
 
 
-# LOAD DATA
+# Load Data
 @st.cache_data
 def load_data():
     try:
@@ -61,7 +61,7 @@ df_prod, df_pay, df_city, df_rev, df_feat = load_data()
 # Global Style
 sns.set_style("white")
 
-# HEADER DASHBOARD
+# Header Dashboard
 st.write("") 
 
 st.markdown("""
@@ -72,7 +72,7 @@ st.markdown("""
 
 # st.divider()
 
-# BARIS 1: PRODUK TERLARIS
+# baris 1: Produk Terlaris
 if df_prod is not None:
     m1, col_main, m2 = st.columns([0.05, 0.9, 0.05])
     with col_main:
@@ -107,7 +107,7 @@ if df_prod is not None:
 
 st.write("") 
 
-# BARIS 2: PEMBAYARAN & KOTA
+# Baris 2: Pembayaran dan kota
 
 m_l, card_pay, gap, card_city, m_r = st.columns([0.05, 0.44, 0.02, 0.44, 0.05])
 
@@ -177,7 +177,7 @@ with card_city:
 
 st.write("") 
 
-# BARIS 3: KETERLAMBATAN & LOGISTIK
+# Baris 3: Keterlambatan dan Logistic
 
 m_l2, card_late, gap2, card_feat, m_r2 = st.columns([0.05, 0.44, 0.02, 0.44, 0.05])
 
@@ -245,13 +245,14 @@ with card_feat:
                         """)
 
 
-# FOOTER
+# Footer
 st.markdown("""
     <div style="text-align: center; color: #94a3b8; padding-top: 30px; padding-bottom: 20px;">
         Dashboard Analytics © 2025 | Brazilian E-Commerce Dataset
     </div>
 
     """, unsafe_allow_html=True)
+
 
 
 
