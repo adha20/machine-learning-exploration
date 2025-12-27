@@ -124,7 +124,7 @@ with card_pay:
             pcol2.metric("Jumlah Transaksi", f"{int(top_pay['total_transactions']):,}")
             pcol3.metric("Dominasi", f"{dom_pay:.1f}%")
             
-            fig, ax = plt.subplots(figsize=(6, 4))
+            fig, ax = plt.subplots(figsize=(6, 3.95))
             sns.barplot(x="payment_type", y="total_transactions", data=df_pay, palette="mako", ax=ax)
             ax.set_xlabel("Metode Pembayaran")
             ax.set_ylabel("Jumlah Transaksi")
@@ -252,6 +252,7 @@ st.markdown("""
     </div>
 
     """, unsafe_allow_html=True)
+
 
 
 
