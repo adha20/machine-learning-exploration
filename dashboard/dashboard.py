@@ -156,7 +156,7 @@ with card_city:
             ccol2.metric("Jumlah Pelanggan", f"{int(top_city['total_customers']):,}")
             ccol3.metric("Market Share", f"{m_share:.1f}%")
             
-            fig, ax = plt.subplots(figsize=(6, 4))
+            fig, ax = plt.subplots(figsize=(6, 3.98))
             sns.barplot(x="total_customers", y="customer_city", data=df_city.head(10), palette="viridis", ax=ax)
             ax.set_xlabel("Jumlah Pelanggan")
             ax.set_ylabel("Kota")
@@ -221,7 +221,7 @@ with card_feat:
             fcol1.metric("Faktor Utama", top_f['feature'])
             fcol2.metric("Tingkat Pengaruh", f"{top_f['importance']:.3f}")
             
-            fig, ax = plt.subplots(figsize=(6, 4.02))
+            fig, ax = plt.subplots(figsize=(6, 4.01))
 
             df_feat_sorted = df_feat.sort_values("importance", ascending=False)
             sns.barplot(x="importance", y="feature", data=df_feat_sorted, palette="viridis", ax=ax)
@@ -252,6 +252,7 @@ st.markdown("""
     </div>
 
     """, unsafe_allow_html=True)
+
 
 
 
