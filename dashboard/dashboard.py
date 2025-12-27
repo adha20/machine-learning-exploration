@@ -15,7 +15,7 @@ st.set_page_config(
 st.markdown("""
     <style>
     /* Background aplikasi */
-    .stApp { background-color: #f8fafc; }
+    .stApp { background-color: #f8fafc !important; }
     
     /* Margin container utama */
     .main { padding: 0rem 3rem; }
@@ -29,9 +29,9 @@ st.markdown("""
 
     /* Memberikan shadow halus pada Card Utama (Container) */
     [data-testid="stVerticalBlockBorderWrapper"] {
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        background-color: #ffffff !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02) !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -247,3 +247,4 @@ st.markdown("""
     </div>
 
     """, unsafe_allow_html=True)
+
