@@ -41,11 +41,11 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        produk_terbanyak = pd.read_csv("produk_terbanyak.csv")
-        metode_pembayaran = pd.read_csv("metode_pembayaran.csv")
-        city_customer_summary = pd.read_csv("city_customer_summary.csv")
-        order_review = pd.read_csv("order_review_summary.csv")
-        feature_importance = pd.read_csv("feature_importance.csv")
+        produk_terbanyak = pd.read_csv("dashboard/produk_terbanyak.csv")
+        metode_pembayaran = pd.read_csv("dashboard/metode_pembayaran.csv")
+        city_customer_summary = pd.read_csv("dashboard/city_customer_summary.csv")
+        order_review = pd.read_csv("dashboard/order_review_summary.csv")
+        feature_importance = pd.read_csv("dashboard/feature_importance.csv")
         return produk_terbanyak, metode_pembayaran, city_customer_summary, order_review, feature_importance
     except Exception as e:
         st.error(f"Gagal memuat data: {e}")
@@ -245,4 +245,5 @@ st.markdown("""
     <div style="text-align: center; color: #94a3b8; padding-top: 30px; padding-bottom: 20px;">
         Dashboard Analytics © 2025 | Brazilian E-Commerce Dataset
     </div>
+
     """, unsafe_allow_html=True)
