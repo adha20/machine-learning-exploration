@@ -12,37 +12,30 @@ st.set_page_config(
 )
 
 # Custom CSS untuk tampilan Card, Metric horizontal, dan background
-st.markdown("""
-<style>
-/* BACKGROUND APP */
-html, body,
-.stApp,
-[data-testid="stAppViewContainer"] {
+/* BACKGROUND */
+html, body, [data-testid="stAppViewContainer"] {
     background-color: #f1f5f9;
 }
 
-/* CONTAINER UTAMA */
+/* MAIN PADDING */
 .main {
     padding: 0rem 3rem;
 }
 
-/* CARD / CONTAINER */
-div[data-testid="stVerticalBlockBorderWrapper"],
-div.block-container > div > div {
+/* CARD – HANYA container(border=True) */
+[data-testid="stVerticalBlockBorderWrapper"] {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    padding: 1rem;
 }
 
-/* METRIC VALUE */
+/* METRIC */
 [data-testid="stMetricValue"] {
     font-size: 1.4rem !important;
     font-weight: 800 !important;
     color: #1e293b !important;
 }
-</style>
-""", unsafe_allow_html=True)
+
 
 
 # LOAD DATA
@@ -255,5 +248,6 @@ st.markdown("""
     </div>
 
     """, unsafe_allow_html=True)
+
 
 
