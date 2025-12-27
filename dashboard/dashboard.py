@@ -11,7 +11,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS untuk tampilan Card, Metric horizontal, dan background
+st.markdown("""
+<style>
 /* BACKGROUND */
 html, body, [data-testid="stAppViewContainer"] {
     background-color: #f1f5f9;
@@ -35,6 +36,9 @@ html, body, [data-testid="stAppViewContainer"] {
     font-weight: 800 !important;
     color: #1e293b !important;
 }
+</style>
+""", unsafe_allow_html=True)
+
 
 
 
