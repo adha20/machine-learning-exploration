@@ -221,7 +221,7 @@ with card_feat:
             fcol1.metric("Faktor Utama", top_f['feature'])
             fcol2.metric("Tingkat Pengaruh", f"{top_f['importance']:.3f}")
             
-            fig, ax = plt.subplots(figsize=(6, 4.001))
+            fig, ax = plt.subplots(figsize=(6, 4.5))
 
             df_feat_sorted = df_feat.sort_values("importance", ascending=False)
             sns.barplot(x="importance", y="feature", data=df_feat_sorted, palette="viridis", ax=ax)
@@ -252,6 +252,7 @@ st.markdown("""
     </div>
 
     """, unsafe_allow_html=True)
+
 
 
 
