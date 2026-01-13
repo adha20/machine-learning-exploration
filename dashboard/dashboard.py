@@ -50,7 +50,7 @@ def load_data():
         st.error(f"Gagal memuat data: {e}")
         return [None] * 5
 
-df_prod, df_pay, df_city, df_rev, df_feat = load_data()
+df_prod, df_pay, df_city, df_rev = load_data()
 
 # Global Style
 sns.set_style("white")
@@ -212,6 +212,7 @@ st.markdown("""
         Dashboard Analytics © 2025 | Brazilian E-Commerce Dataset
     </div>
     """, unsafe_allow_html=True)
+
 
 
 
