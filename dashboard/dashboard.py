@@ -4,42 +4,37 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# halaman
+# Konfigurasi Halaman
 st.set_page_config(
     page_title="Dashboard E-Commerce Analytics", 
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
+# Custom CSS
 st.markdown("""
-<style>
-/* background */
-html, body, [data-testid="stAppViewContainer"] {
-    background-color: #ffffff;
-}
+    <style>
+    /* Background aplikasi */
+    .stApp { background-color: #f8fafc; }
+    
+    /* Margin container utama */
+    .main { padding: 0rem 3rem; }
 
-/* padding */
-.main {
-    padding: 0rem 3rem;
-}
+    /* Mempertegas teks Metric Value */
+    [data-testid="stMetricValue"] {
+        font-size: 1.4rem !important; 
+        font-weight: 800 !important;
+        color: #1e293b !important;
+    }
 
-/* container(border=True) */
-[data-testid="stVerticalBlockBorderWrapper"] {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-}
-
-/* metric */
-[data-testid="stMetricValue"] {
-    font-size: 1.4rem !important;
-    font-weight: 800 !important;
-    color: #1e293b !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-
+    /* Memberikan shadow halus pada Card Utama (Container) */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 
 # Load Data
@@ -72,7 +67,7 @@ st.markdown("""
 
 # st.divider()
 
-# baris 1: Produk Terlaris
+# BARIS 1: Produk Terlaris
 if df_prod is not None:
     m1, col_main, m2 = st.columns([0.05, 0.9, 0.05])
     with col_main:
@@ -107,7 +102,7 @@ if df_prod is not None:
 
 st.write("") 
 
-# Baris 2: Pembayaran dan kota
+# Baris 2: Pembayaran dan Kota
 
 m_l, card_pay, gap, card_city, m_r = st.columns([0.05, 0.44, 0.02, 0.44, 0.05])
 
@@ -124,7 +119,7 @@ with card_pay:
             pcol2.metric("Jumlah Transaksi", f"{int(top_pay['total_transactions']):,}")
             pcol3.metric("Dominasi", f"{dom_pay:.1f}%")
             
-            fig, ax = plt.subplots(figsize=(6, 3.95))
+            fig, ax = plt.subplots(figsize=(6, 4))
             sns.barplot(x="payment_type", y="total_transactions", data=df_pay, palette="mako", ax=ax)
             ax.set_xlabel("Metode Pembayaran")
             ax.set_ylabel("Jumlah Transaksi")
@@ -156,7 +151,7 @@ with card_city:
             ccol2.metric("Jumlah Pelanggan", f"{int(top_city['total_customers']):,}")
             ccol3.metric("Market Share", f"{m_share:.1f}%")
             
-            fig, ax = plt.subplots(figsize=(6, 3.90))
+            fig, ax = plt.subplots(figsize=(6, 4))
             sns.barplot(x="total_customers", y="customer_city", data=df_city.head(10), palette="viridis", ax=ax)
             ax.set_xlabel("Jumlah Pelanggan")
             ax.set_ylabel("Kota")
@@ -212,55 +207,10 @@ with card_late:
                         pelanggan, sehingga setiap bentuk keterlambatan akan langsung berdampak buruk pada penilaian terhadap layanan.
                         """)
 
-with card_feat:
-    with st.container(border=True):
-        st.subheader("Faktor yang memengaruhi Lama Waktu Pengiriman")
-        if df_feat is not None:
-            top_f = df_feat.nlargest(1, 'importance').iloc[0]
-            fcol1, fcol2 = st.columns(2)
-            fcol1.metric("Faktor Utama", top_f['feature'])
-            fcol2.metric("Tingkat Pengaruh", f"{top_f['importance']:.3f}")
-            
-            fig, ax = plt.subplots(figsize=(6, 3.90))
-
-            df_feat_sorted = df_feat.sort_values("importance", ascending=False)
-            sns.barplot(x="importance", y="feature", data=df_feat_sorted, palette="viridis", ax=ax)
-            
-            ax.set_xlabel("Importance Score")
-            ax.set_ylabel("Fitur")
-            ax.grid(False)
-            sns.despine()
-            plt.tight_layout()
-            st.pyplot(fig, use_container_width=True)
-            plt.close()
-
-            with st.expander("Analisis Pengiriman"):
-                st.write("""
-                        Berdasarkan analisis feature importance, variabel freight_value (biaya pengiriman) 
-                        diidentifikasi sebagai faktor yang paling dominan dalam menentukan durasi pengiriman dibandingkan dimensi 
-                        fisik produk. Hal ini menunjukkan bahwa kompleksitas biaya, berat paket, dan lokasi geografis pelanggan 
-                        memiliki pengaruh lebih besar terhadap efisiensi logistik, sehingga perusahaan perlu memfokuskan strategi 
-                        pada pemilihan mitra pengiriman yang tepat serta optimasi rute distribusi untuk menekan waktu tempuh 
-                        secara lebih efektif.
-                        """)
-
-
 # Footer
 st.markdown("""
     <div style="text-align: center; color: #94a3b8; padding-top: 30px; padding-bottom: 20px;">
         Dashboard Analytics © 2025 | Brazilian E-Commerce Dataset
     </div>
-
     """, unsafe_allow_html=True)
-
-
-
-
-
-
-
-
-
-
-
 
