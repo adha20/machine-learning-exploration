@@ -45,7 +45,7 @@ def load_data():
         metode_pembayaran = pd.read_csv("dashboard/metode_pembayaran.csv")
         city_customer_summary = pd.read_csv("dashboard/city_customer_summary.csv")
         order_review = pd.read_csv("dashboard/order_review_summary.csv")
-        return produk_terbanyak, metode_pembayaran, city_customer_summary, order_review, feature_importance
+        return produk_terbanyak, metode_pembayaran, city_customer_summary, order_review
     except Exception as e:
         st.error(f"Gagal memuat data: {e}")
         return [None] * 5
@@ -212,5 +212,6 @@ st.markdown("""
         Dashboard Analytics © 2025 | Brazilian E-Commerce Dataset
     </div>
     """, unsafe_allow_html=True)
+
 
 
